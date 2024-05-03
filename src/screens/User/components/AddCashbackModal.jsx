@@ -1,0 +1,130 @@
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Divider,
+  Grid,
+  Modal,
+  TextField,
+} from '@mui/material';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { toast } from 'sonner';
+import { URL_SERVER } from '../../../helpers/ProviderUrl';
+
+export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
+  const [values, setValues] = useState({
+    code: '',
+    amount: 0,
+    action: 'ADD',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  const handleSave = async () => {
+    let _payload = {
+      ...values,
+      action: action,
+      branch: JSON.parse(sessionStorage.getItem('user_data')).branch,
+      user: JSON.parse(sessionStorage.getItem('user_data'))._id,
+    };
+
+    try {
+      const response = await axios.post(
+        `${URL_SERVER}transactions/transactions`,
+        _payload,
+      );
+
+      if (response.data.ok) {
+        toast.success('Cashback registrado correctamente');
+        setReload((oldReload) => oldReload + 1);
+        setTimeout(() => {
+          onClose();
+        }, 1000);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Error al registrar cashback');
+    }
+  };
+
+  return (
+    <Modal open={open} onClose={onClose}>
+      <Card
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          boxShadow: 24,
+          borderRadius: 3,
+          width: '90vw',
+        }}
+      >
+        <CardHeader title={`${action} Cashback`} />
+        <Divider variant='middle' />
+        <CardContent>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <TextField
+                label='Code'
+                variant='outlined'
+                fullWidth
+                name='code'
+                value={values.code}
+                onChange={handleInputChange}
+                InputProps={{
+                  style: {
+                    borderRadius: '8px',
+                  },
+                }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label='Amount'
+                variant='outlined'
+                fullWidth
+                name='amount'
+                type='number'
+                value={values.amount}
+                onChange={handleInputChange}
+                InputProps={{
+                  style: {
+                    borderRadius: '8px',
+                  },
+                }}
+              />
+            </Grid>
+          </Grid>
+        </CardContent>
+        <Divider variant='middle' />
+        <CardActions
+          sx={{
+            alignContent: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Button
+            sx={{
+              borderRadius: 2,
+            }}
+            variant='contained'
+            color='success'
+            onClick={handleSave}
+          >
+            Guardar
+          </Button>
+        </CardActions>
+      </Card>
+    </Modal>
+  );
+};
