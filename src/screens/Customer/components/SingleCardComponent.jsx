@@ -125,14 +125,7 @@ export const SingleCardComponent = ({ data = null }) => {
               padding: 2,
             }}
           >
-            <Typography
-              variant='h6'
-              sx={{
-                fontFamily: 'Futura',
-              }}
-            >
-              {currentCode}
-            </Typography>
+            <Typography variant='h6'>{currentCode}</Typography>
           </Box>
         </Card>
       </Modal>
