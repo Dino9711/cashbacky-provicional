@@ -17,7 +17,7 @@ import { URL_SERVER } from '../../../helpers/ProviderUrl';
 export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
   const [values, setValues] = useState({
     code: '',
-    amount: 0,
+    amount: '',
     action: 'ADD',
   });
 
@@ -32,6 +32,7 @@ export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
   const handleSave = async () => {
     let _payload = {
       ...values,
+      amount: parseFloat(values.amount),
       action: action,
       branch: JSON.parse(sessionStorage.getItem('user_data')).branch,
       user: JSON.parse(sessionStorage.getItem('user_data'))._id,
