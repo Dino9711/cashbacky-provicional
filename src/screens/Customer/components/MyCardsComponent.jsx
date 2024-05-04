@@ -7,12 +7,12 @@ import { SingleCardComponent } from './SingleCardComponent';
 
 export const MyCardsComponent = () => {
   const [cards, setCards] = useState([]);
-  const { _id } = JSON.parse(sessionStorage.getItem('user_data'));
+  const user_data = JSON.parse(sessionStorage.getItem('user_data'));
 
   const handleGetCuscomerCards = async () => {
     try {
       const response = await axios.get(
-        `${URL_SERVER}cards/customer?customer=${_id}`,
+        `${URL_SERVER}cards/customer?customer=${user_data._id}`,
       );
       setCards(response.data.data);
     } catch (error) {

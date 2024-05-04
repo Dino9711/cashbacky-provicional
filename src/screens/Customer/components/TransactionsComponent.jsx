@@ -7,12 +7,12 @@ import { SingleTransactionComponent } from './SingleTransactionComponent';
 
 export const TransactionsComponent = () => {
   const [transactions, setTransactions] = useState([]);
-  const { _id } = JSON.parse(sessionStorage.getItem('user_data'));
+  const user_data = JSON.parse(sessionStorage.getItem('user_data'));
 
   const getTransactions = async () => {
     try {
       const response = await axios.get(
-        `${URL_SERVER}transactions/customer?customer=${_id}`,
+        `${URL_SERVER}transactions/customer?customer=${user_data._id}`,
       );
 
       if (response.data.ok) {

@@ -16,9 +16,7 @@ import { URL_SERVER } from '../../../helpers/ProviderUrl';
 export const SingleCardComponent = ({ data = null }) => {
   const [openCodeModal, setOpenCodeModal] = useState(false);
   const [currentCode, setCurrentCode] = useState('');
-  const { name, lastnames, _id } = JSON.parse(
-    sessionStorage.getItem('user_data'),
-  );
+  const user_data = JSON.parse(sessionStorage.getItem('user_data'));
 
   const handleCloseModal = () => {
     setOpenCodeModal(false);
@@ -28,7 +26,7 @@ export const SingleCardComponent = ({ data = null }) => {
   const handleGetTransactionCode = async () => {
     try {
       const response = await axios.post(`${URL_SERVER}transaction_codes`, {
-        customer: _id,
+        customer: user_data._id,
       });
 
       if (response.data.ok) {
@@ -62,7 +60,7 @@ export const SingleCardComponent = ({ data = null }) => {
         >
           <CardHeader
             title={data.branch.name}
-            subheader={`${name} ${lastnames}`}
+            subheader={`${user_data.name} ${user_data.lastnames}`}
           />
           <Box
             sx={{
