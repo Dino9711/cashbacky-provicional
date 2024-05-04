@@ -20,10 +20,10 @@ export const SingleTransactionComponent = ({ data = null }) => {
             borderRadius: 3,
             width: '80vw',
             height: 'auto',
-            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
             border: '2px solid rgba(255, 255, 255, 0.125)',
             backgroundImage:
-              'linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0))',
+              'linear-gradient(to bottom right, rgba(255,255,255,0.4), rgba(255,255,255,0.2))',
             boxShadow: 'none',
             margin: '10px',
             // border: 'solid 2px #48588c',
@@ -31,6 +31,13 @@ export const SingleTransactionComponent = ({ data = null }) => {
           elevation={0}
         >
           <CardHeader
+            sx={{
+              fontFamily: 'Futura',
+              color: 'white',
+              '& .MuiCardHeader-subheader': {
+                color: 'white',
+              },
+            }}
             title={moment(data.created_at).format('DD/MM/YYYY HH:MM:ss')}
             subheader={data.branch.name}
           />
@@ -44,6 +51,7 @@ export const SingleTransactionComponent = ({ data = null }) => {
               variant='h6'
               sx={{
                 fontFamily: 'Futura',
+                color: 'white',
               }}
               component='div'
             >
@@ -60,7 +68,7 @@ export const SingleTransactionComponent = ({ data = null }) => {
           >
             <Button
               variant='contained'
-              color='secondary'
+              color={data.action === 'ADD' ? 'success' : 'warning'}
               disableElevation
               sx={{
                 fontFamily: 'Futura',

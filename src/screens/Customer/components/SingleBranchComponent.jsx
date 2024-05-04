@@ -15,7 +15,7 @@ import { URL_SERVER } from '../../../helpers/ProviderUrl';
 export const SingleBranchComponent = ({ data = null }) => {
   const handleCreateCard = async () => {
     try {
-      const response = await axios.post(`${URL_SERVER}/cards`, {
+      const response = await axios.post(`${URL_SERVER}cards`, {
         branch: data._id,
         customer: JSON.parse(sessionStorage.getItem('user_data'))._id,
       });
