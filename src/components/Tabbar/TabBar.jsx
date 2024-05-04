@@ -86,6 +86,13 @@ export const TabBar = () => {
     }
   }, [logged, user, history]);
 
+  React.useEffect(() => {
+    if (JSON.parse(window.sessionStorage.getItem('user_data')) === null) {
+      authProvider.logout();
+      history.push('/login');
+    }
+  }, []);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };

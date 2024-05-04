@@ -16,7 +16,7 @@ import { URL_SERVER } from '../../../helpers/ProviderUrl';
 
 export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
   const [values, setValues] = useState({
-    code: '',
+    transaction_code: '',
     amount: '',
     action: 'ADD',
   });
@@ -79,8 +79,8 @@ export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
                 label='Code'
                 variant='outlined'
                 fullWidth
-                name='code'
-                value={values.code}
+                name='transaction_code'
+                value={values.transaction_code}
                 onChange={handleInputChange}
                 InputProps={{
                   style: {
