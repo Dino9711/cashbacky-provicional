@@ -15,11 +15,13 @@ import { toast } from 'sonner';
 import { URL_SERVER } from '../../../helpers/ProviderUrl';
 
 export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
-  const [values, setValues] = useState({
+  const initial_values = {
     transaction_code: '',
     amount: '',
     action: 'ADD',
-  });
+  };
+
+  const [values, setValues] = useState(initial_values);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +49,7 @@ export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
       if (response.data.ok) {
         toast.success('Cashback registrado correctamente');
         setReload((oldReload) => oldReload + 1);
+        setValues(initial_values);
         setTimeout(() => {
           onClose();
         }, 1000);

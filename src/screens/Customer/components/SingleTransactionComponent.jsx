@@ -55,7 +55,9 @@ export const SingleTransactionComponent = ({ data = null }) => {
               }}
               component='div'
             >
-              {`Cashback ${NumberToCurrency(data.points)}`}
+              {`${NumberToCurrency(
+                data.action === 'ADD' ? data.points : data.amount,
+              )}`}
             </Typography>
           </Box>
           <Divider variant='middle' />

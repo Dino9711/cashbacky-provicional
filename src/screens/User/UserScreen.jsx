@@ -92,7 +92,7 @@ export const UserScreen = () => {
             <Button
               color='secondary'
               variant='contained'
-              onClick={() => handleOpenAddModal('SUBTRACT')}
+              onClick={() => handleOpenAddModal('SUBSTRACT')}
               sx={{
                 borderRadius: 2,
               }}
