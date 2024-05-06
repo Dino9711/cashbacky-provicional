@@ -39,7 +39,7 @@ export const SingleTransactionComponent = ({ data = null }) => {
               },
             }}
             title={moment(data.created_at).format('DD/MM/YYYY HH:MM:ss')}
-            subheader={data.branch.name}
+            subheader={`${data.branch.name}`}
           />
           <Box
             sx={{
@@ -64,10 +64,20 @@ export const SingleTransactionComponent = ({ data = null }) => {
           <CardActions
             sx={{
               display: 'flex',
-              justifyContent: 'flex-end',
+              justifyContent: 'space-between',
               alignItems: 'center',
             }}
           >
+            <Typography
+              variant='caption'
+              sx={{
+                fontFamily: 'Futura',
+                color: 'white',
+              }}
+              component='div'
+            >
+              {data._id}
+            </Typography>
             <Button
               variant='contained'
               color={data.action === 'ADD' ? 'success' : 'warning'}
