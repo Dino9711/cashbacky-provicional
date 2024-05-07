@@ -18,7 +18,7 @@ export const SingleTransactionComponent = ({ data = null }) => {
         <Card
           sx={{
             borderRadius: 3,
-            width: '80vw',
+            width: '90vw',
             height: 'auto',
             backgroundColor: 'rgba(0, 0, 0, 0.8)',
             border: '2px solid rgba(255, 255, 255, 0.125)',
