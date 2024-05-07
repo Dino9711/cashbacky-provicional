@@ -1,10 +1,13 @@
+import { Loyalty } from '@mui/icons-material';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import StoreIcon from '@mui/icons-material/Store';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
-import { IconCreditCard } from '@tabler/icons-react';
+import { IconCreditCard, IconUser } from '@tabler/icons-react';
 import React from 'react';
 import { BranchesComponent } from './components/BranchesComponent';
 import { MyCardsComponent } from './components/MyCardsComponent';
+import { MyProfileComponent } from './components/MyProfileComponent';
+import { PromotionsComponent } from './components/PromotionsComponent';
 import { TransactionsComponent } from './components/TransactionsComponent';
 
 export const CustomerScreen = () => {
@@ -14,6 +17,8 @@ export const CustomerScreen = () => {
     branches: <BranchesComponent />,
     cards: <MyCardsComponent />,
     transactions: <TransactionsComponent />,
+    profile: <MyProfileComponent />,
+    promotions: <PromotionsComponent />,
   };
 
   const handleChange = (event, newValue) => {
@@ -29,7 +34,10 @@ export const CustomerScreen = () => {
           bottom: 0,
           left: 0,
           right: 0,
+          backgroundColor: '#d6e4e7',
+          borderRadius: '12px 12px 0 0',
         }}
+        showLabels
         value={value}
         onChange={handleChange}
       >
@@ -37,6 +45,11 @@ export const CustomerScreen = () => {
           label='Branches'
           value='branches'
           icon={<StoreIcon />}
+        />
+        <BottomNavigationAction
+          label='Promotions'
+          value='promotions'
+          icon={<Loyalty />}
         />
         <BottomNavigationAction
           label='My Cards'
@@ -47,6 +60,11 @@ export const CustomerScreen = () => {
           label='Transactions'
           value='transactions'
           icon={<DehazeIcon />}
+        />
+        <BottomNavigationAction
+          label='My Profile'
+          value='profile'
+          icon={<IconUser />}
         />
       </BottomNavigation>
     </>
