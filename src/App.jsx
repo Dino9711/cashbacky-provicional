@@ -8,7 +8,7 @@ function App() {
   return (
     <LocalizationProvider locale={esLocale} dateAdapter={AdapterDateFns}>
       <AppRouter />
-      <Toaster />
+      <Toaster position='top-center' />
     </LocalizationProvider>
   );
 }
