@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardActions,
   CardHeader,
@@ -44,16 +45,16 @@ export const SingleCardComponent = ({ data = null }) => {
     <>
       {data !== null ? (
         <Card
-          onClick={handleGetTransactionCode}
           sx={{
             borderRadius: 3,
-            width: '80vw',
+            width: '90vw',
             height: 'auto',
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
             border: '2px solid rgba(255, 255, 255, 0.125)',
             backgroundImage:
               'linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0))',
             boxShadow: 'none',
+            margin: '10px',
             // border: 'solid 2px #48588c',
           }}
           elevation={0}
@@ -81,10 +82,22 @@ export const SingleCardComponent = ({ data = null }) => {
           <CardActions
             sx={{
               display: 'flex',
-              justifyContent: 'flex-end',
+              justifyContent: 'space-between',
               alignItems: 'center',
             }}
           >
+            <Button
+              variant='contained'
+              disableElevation
+              sx={{
+                fontFamily: 'Futura',
+                borderRadius: 2,
+              }}
+              color='inherit'
+              onClick={handleGetTransactionCode}
+            >
+              GET A CODE
+            </Button>
             <Typography
               variant='h5'
               sx={{
@@ -125,6 +138,21 @@ export const SingleCardComponent = ({ data = null }) => {
           >
             <Typography variant='h6'>{currentCode}</Typography>
           </Box>
+          <Divider variant='middle' />
+          <CardActions>
+            <Button
+              variant='outlined'
+              disableElevation
+              sx={{
+                fontFamily: 'Futura',
+                borderRadius: 2,
+              }}
+              color='error'
+              onClick={handleCloseModal}
+            >
+              CLOSE
+            </Button>
+          </CardActions>
         </Card>
       </Modal>
     </>
