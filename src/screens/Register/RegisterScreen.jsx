@@ -8,6 +8,7 @@ import {
   Divider,
   Grid,
   TextField,
+  Typography,
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
 import axios from 'axios';
@@ -59,13 +60,24 @@ export const RegisterScreen = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          flexDirection: 'column',
         }}
       >
+        <Typography
+          variant='h4'
+          sx={{
+            fontFamily: 'Futura',
+          }}
+          gutterBottom
+        >
+          CASHBACKY
+        </Typography>
         <Card
           elevation={0}
           sx={{
             borderRadius: 3,
-            width: '85vw',
+            width: '96vw',
+            backgroundColor: '#d6e4e7',
           }}
         >
           <CardHeader title='Register' />
