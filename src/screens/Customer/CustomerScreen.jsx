@@ -37,7 +37,6 @@ export const CustomerScreen = () => {
           backgroundColor: '#d6e4e7',
           borderRadius: '12px 12px 0 0',
         }}
-        showLabels
         value={value}
         onChange={handleChange}
       >
@@ -52,7 +51,7 @@ export const CustomerScreen = () => {
           icon={<Loyalty />}
         />
         <BottomNavigationAction
-          label='My Cards'
+          label='Cards'
           value='cards'
           icon={<IconCreditCard />}
         />
@@ -62,7 +61,7 @@ export const CustomerScreen = () => {
           icon={<DehazeIcon />}
         />
         <BottomNavigationAction
-          label='My Profile'
+          label='Profile'
           value='profile'
           icon={<IconUser />}
         />
