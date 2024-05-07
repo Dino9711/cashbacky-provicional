@@ -35,13 +35,14 @@ export const SingleBranchComponent = ({ data = null }) => {
         <Card
           sx={{
             borderRadius: 3,
-            width: '80vw',
+            width: '90vw',
             height: 'auto',
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
             border: '2px solid rgba(255, 255, 255, 0.125)',
             backgroundImage:
               'linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0))',
             boxShadow: 'none',
+            margin: '10px',
             // border: 'solid 2px #48588c',
           }}
           elevation={0}
