@@ -67,16 +67,27 @@ export const Login = () => {
         <form onSubmit={login}>
           <Box
             sx={{
-              height: '70vh',
+              paddingTop: '60px',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              flexDirection: 'column',
             }}
           >
+            <Typography
+              variant='h4'
+              sx={{
+                fontFamily: 'Futura',
+              }}
+              gutterBottom
+            >
+              CASHBACKY
+            </Typography>
             <Card
               sx={{
-                width: '85vw',
+                width: '96vw',
                 borderRadius: 3,
+                backgroundColor: '#d6e4e7',
               }}
               elevation={0}
             >
