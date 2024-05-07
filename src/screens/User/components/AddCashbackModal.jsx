@@ -19,6 +19,7 @@ export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
     transaction_code: '',
     amount: '',
     action: 'ADD',
+    ticket_invoice: '',
   };
 
   const [values, setValues] = useState(initial_values);
@@ -100,6 +101,23 @@ export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
                 name='amount'
                 type='number'
                 value={values.amount}
+                onChange={handleInputChange}
+                InputProps={{
+                  style: {
+                    borderRadius: '8px',
+                  },
+                }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label='Ticket Invoice'
+                variant='outlined'
+                fullWidth
+                required={action === 'ADD' ? true : false}
+                name='ticket_invoice'
+                type='number'
+                value={values.ticket_invoice}
                 onChange={handleInputChange}
                 InputProps={{
                   style: {
