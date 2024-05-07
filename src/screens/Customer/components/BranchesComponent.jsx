@@ -29,10 +29,11 @@ export const BranchesComponent = () => {
     <>
       <Box
         sx={{
-          padding: '10px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          flexDirection: 'column',
+          marginBottom: '50px',
         }}
       >
         {branches.map((branch) => (
