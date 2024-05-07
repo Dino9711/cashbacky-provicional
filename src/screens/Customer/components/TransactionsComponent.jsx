@@ -33,11 +33,11 @@ export const TransactionsComponent = () => {
     <>
       <Box
         sx={{
-          padding: '10px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
+          marginBottom: '50px',
         }}
       >
         {transactions.map((transaction) => (
