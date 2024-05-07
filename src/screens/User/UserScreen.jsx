@@ -10,7 +10,9 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'sonner';
+import authProvider from '../../auth/authProvider';
 import { TableComponent } from '../../components/Table/TableComponent';
 import { URL_SERVER } from '../../helpers/ProviderUrl';
 import { AddCashbackModal } from './components/AddCashbackModal';
@@ -21,6 +23,8 @@ export const UserScreen = () => {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [actionForModal, setActionForModal] = useState('ADD');
   const user_data = JSON.parse(sessionStorage.getItem('user_data'));
+
+  const history = useHistory();
 
   const handleCloseAddModal = () => {
     setOpenAddModal(false);
@@ -52,88 +56,112 @@ export const UserScreen = () => {
     { id: 'amount', label: 'Amount', toCurrency: true },
   ];
 
+  const handleCloseSession = () => {
+    authProvider.logout();
+    history.push('/login');
+  };
+
   return (
-    <>
-      <Box
+    <Box
+      sx={{
+        paddingTop: '20px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        marginBottom: '50px',
+      }}
+    >
+      <Card
+        elevation={0}
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: 'auto',
-          padding: 2,
+          width: '95vw',
+          borderRadius: 3,
+          backgroundColor: '#d6e4e7',
+          marginBottom: '20px',
         }}
       >
-        <Card
-          elevation={0}
+        <CardHeader title='Transactions' />
+        <Divider variant='middle' />
+        <CardContent>
+          <Typography align='center' variant='h6'>
+            CASH BACKY
+          </Typography>
+        </CardContent>
+        <Divider variant='middle' />
+        <CardActions
           sx={{
-            width: '85vw',
-            borderRadius: 3,
+            display: 'flex',
+            justifyContent: 'space-around',
           }}
         >
-          <CardHeader title='Transactions' />
-          <Divider variant='middle' />
-          <CardContent>
-            <Typography align='center' variant='h6'>
-              CASH BACKY
-            </Typography>
-          </CardContent>
-          <Divider variant='middle' />
-          <CardActions>
-            <Button
-              color='success'
-              variant='contained'
-              onClick={() => handleOpenAddModal('ADD')}
-              sx={{
-                borderRadius: 2,
-              }}
-            >
-              Agregar Backys
-            </Button>
-            <Button
-              color='secondary'
-              variant='contained'
-              onClick={() => handleOpenAddModal('SUBSTRACT')}
-              sx={{
-                borderRadius: 2,
-              }}
-            >
-              Canjear Backys
-            </Button>
-          </CardActions>
-        </Card>
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: 'auto',
-          padding: 2,
-        }}
-      >
-        <Card
-          elevation={0}
-          sx={{
-            borderRadius: 3,
-            width: '85vw',
-          }}
-        >
-          <CardHeader title='Last Transactions' />
-          <Divider variant='middle' />
-          <CardContent
+          <Button
+            color='success'
+            variant='contained'
+            onClick={() => handleOpenAddModal('ADD')}
             sx={{
-              maxHeight: '350px',
-              overflow: 'auto',
+              borderRadius: 2,
             }}
           >
-            <TableComponent
-              rows={transactions}
-              columns={columns}
-              pagination={false}
-              dense={true}
-            />
-          </CardContent>
-        </Card>
+            Agregar Backys
+          </Button>
+          <Button
+            color='secondary'
+            variant='contained'
+            onClick={() => handleOpenAddModal('SUBSTRACT')}
+            sx={{
+              borderRadius: 2,
+            }}
+          >
+            Canjear Backys
+          </Button>
+        </CardActions>
+      </Card>
+
+      <Card
+        elevation={0}
+        sx={{
+          borderRadius: 3,
+          width: '95vw',
+          border: 'solid 2px #48588c',
+        }}
+      >
+        <CardHeader title='Last Transactions' />
+        <Divider variant='middle' />
+        <CardContent
+          sx={{
+            maxHeight: '350px',
+            overflow: 'auto',
+          }}
+        >
+          <TableComponent
+            rows={transactions}
+            columns={columns}
+            pagination={false}
+            dense={true}
+          />
+        </CardContent>
+      </Card>
+      <Box
+        sx={{
+          paddingTop: '20px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+          marginBottom: '50px',
+        }}
+      >
+        <Button
+          color='error'
+          variant='outlined'
+          sx={{
+            borderRadius: 3,
+          }}
+          onClick={handleCloseSession}
+        >
+          Close Session
+        </Button>
       </Box>
       <AddCashbackModal
         setReload={setReload}
@@ -141,6 +169,6 @@ export const UserScreen = () => {
         onClose={handleCloseAddModal}
         action={actionForModal}
       />
-    </>
+    </Box>
   );
 };
