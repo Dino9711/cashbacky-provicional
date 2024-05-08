@@ -8,16 +8,16 @@ const theme = createTheme({
       main: '#222224',
     },
     secondary: {
-      main: '#4d8f8d',
+      main: '#48588c',
     },
     success: {
-      main: '#4caf50',
+      main: '#7789ae',
     },
     error: {
-      main: '#f44336',
+      main: '#f5f5f5',
     },
     warning: {
-      main: '#ff9800',
+      main: '#c1badd',
     },
   },
 });

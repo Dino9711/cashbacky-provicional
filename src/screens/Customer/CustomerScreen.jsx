@@ -34,7 +34,7 @@ export const CustomerScreen = () => {
           bottom: 0,
           left: 0,
           right: 0,
-          backgroundColor: '#4d8f8d',
+          backgroundColor: '#d3daf0',
           borderRadius: '12px 12px 0 0',
           '& .Mui-selected': {
             color: '#222224',
