@@ -20,7 +20,7 @@ export const SingleTransactionComponent = ({ data = null }) => {
             borderRadius: 3,
             width: '90vw',
             height: 'auto',
-            backgroundColor: 'rgba(97, 113, 108, 0.6)',
+            backgroundColor: 'rgba(189,181,218,1)',
             border: '2px solid rgba(255, 255, 255, 0.125)',
             backgroundImage:
               'linear-gradient(to bottom right, rgba(255,255,255,0.4), rgba(255,255,255,0.2))',
@@ -71,7 +71,7 @@ export const SingleTransactionComponent = ({ data = null }) => {
             </Typography>
             <Button
               variant='contained'
-              color={data.action === 'ADD' ? 'success' : 'warning'}
+              color={data.action === 'ADD' ? 'primary' : 'secondary'}
               disableElevation
               sx={{
                 fontFamily: 'Futura',

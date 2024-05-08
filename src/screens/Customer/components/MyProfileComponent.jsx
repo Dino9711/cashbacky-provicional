@@ -74,7 +74,7 @@ export const MyProfileComponent = () => {
             width: '100%',
             maxWidth: '400px',
             margin: 'auto',
-            backgroundColor: '#d6e4e7',
+            backgroundColor: 'rgba(189,181,218,0.6)',
             borderRadius: 3,
           }}
           elevation={0}
