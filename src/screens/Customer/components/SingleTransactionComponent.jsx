@@ -20,7 +20,7 @@ export const SingleTransactionComponent = ({ data = null }) => {
             borderRadius: 3,
             width: '90vw',
             height: 'auto',
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            backgroundColor: 'rgba(97, 113, 108, 0.6)',
             border: '2px solid rgba(255, 255, 255, 0.125)',
             backgroundImage:
               'linear-gradient(to bottom right, rgba(255,255,255,0.4), rgba(255,255,255,0.2))',
@@ -31,13 +31,6 @@ export const SingleTransactionComponent = ({ data = null }) => {
           elevation={0}
         >
           <CardHeader
-            sx={{
-              fontFamily: 'Futura',
-              color: 'white',
-              '& .MuiCardHeader-subheader': {
-                color: 'white',
-              },
-            }}
             title={moment(data.created_at).format('DD/MM/YYYY HH:MM:ss')}
             subheader={`${data.branch.name}`}
           />
@@ -51,7 +44,6 @@ export const SingleTransactionComponent = ({ data = null }) => {
               variant='h6'
               sx={{
                 fontFamily: 'Futura',
-                color: 'white',
               }}
               component='div'
             >
@@ -72,7 +64,6 @@ export const SingleTransactionComponent = ({ data = null }) => {
               variant='caption'
               sx={{
                 fontFamily: 'Futura',
-                color: 'white',
               }}
               component='div'
             >

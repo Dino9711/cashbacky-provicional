@@ -37,7 +37,7 @@ export const SingleBranchComponent = ({ data = null }) => {
             borderRadius: 3,
             width: '90vw',
             height: 'auto',
-            backgroundColor: 'rgba(0, 0, 0, 0.4)',
+            backgroundColor: 'rgba(97, 113, 108, 0.6)',
             border: '2px solid rgba(255, 255, 255, 0.125)',
             backgroundImage:
               'linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0))',
