@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { URL_SERVER } from '../../../helpers/ProviderUrl';
+import { SingleAdComponent } from './SingleAdComponent';
 
 export const PromotionsComponent = () => {
   const [ads, setAds] = useState([]);
