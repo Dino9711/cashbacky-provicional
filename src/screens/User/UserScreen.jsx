@@ -153,7 +153,7 @@ export const UserScreen = () => {
         }}
       >
         <Button
-          color='error'
+          color='primary'
           variant='outlined'
           sx={{
             borderRadius: 3,
