@@ -34,8 +34,11 @@ export const CustomerScreen = () => {
           bottom: 0,
           left: 0,
           right: 0,
-          backgroundColor: '#d6e4e7',
+          backgroundColor: '#4d8f8d',
           borderRadius: '12px 12px 0 0',
+          '& .Mui-selected': {
+            color: '#222224',
+          },
         }}
         value={value}
         onChange={handleChange}

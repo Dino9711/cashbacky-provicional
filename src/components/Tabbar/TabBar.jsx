@@ -103,7 +103,11 @@ export const TabBar = () => {
   }, [logged, user, history]);
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box
+      sx={{
+        display: 'flex',
+      }}
+    >
       <Switch>
         {logged ? (
           <>
