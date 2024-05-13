@@ -1,8 +1,9 @@
 import {
+  Box,
   Card,
   CardContent,
   CardHeader,
-  Divider,
+  CardMedia,
   Typography,
 } from '@mui/material';
 import React from 'react';
@@ -16,18 +17,46 @@ export const SingleAdComponent = ({ data = null }) => {
             borderRadius: 3,
             width: '90vw',
             height: 'auto',
-            backgroundColor: 'rgba(189,181,218,1)',
-            border: '2px solid rgba(255, 255, 255, 0.125)',
-            backgroundImage:
-              'linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0))',
-            boxShadow: 'none',
+            border: 'solid 2px #48588c',
             margin: '10px',
+            backgroundColor: '#efeef0',
             // border: 'solid 2px #48588c',
           }}
           elevation={0}
         >
-          <CardHeader title={data.title} subheader={data.branch.name} />
-          <Divider variant='middle' />
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '10px',
+            }}
+          >
+            <CardMedia
+              sx={{
+                borderRadius: 2,
+              }}
+              component='img'
+              height='194'
+              image={data.image}
+              alt={data.title}
+            />
+          </Box>
+          <CardHeader
+            sx={{
+              paddingTop: 0,
+              paddingBottom: 0,
+              fontFamily: 'Futura',
+              '& .MuiCardHeader-title': {
+                fontSize: '1.5rem',
+              },
+              '& .MuiCardHeader-subheader': {
+                fontSize: '1rem',
+              },
+            }}
+            title={data.title}
+            subheader={data.branch.name}
+          />
           <CardContent>
             <Typography
               variant='body1'
