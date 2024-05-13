@@ -28,6 +28,7 @@ export const SingleCardComponent = ({ data = null }) => {
     try {
       const response = await axios.post(`${URL_SERVER}transaction_codes`, {
         customer: user_data._id,
+        card: data._id,
       });
 
       if (response.data.ok) {
@@ -147,7 +148,7 @@ export const SingleCardComponent = ({ data = null }) => {
                 fontFamily: 'Futura',
                 borderRadius: 2,
               }}
-              color='error'
+              color='secondary'
               onClick={handleCloseModal}
             >
               CLOSE
