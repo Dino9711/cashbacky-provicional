@@ -2,10 +2,22 @@ import { Box } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import esLocale from 'date-fns/locale/es';
+import { useEffect } from 'react';
 import { Toaster } from 'sonner';
+import { useSocketEmit, useSocketOn } from './hooks/useSocket';
 import { AppRouter } from './routes/components/Approuter';
 
 function App() {
+  const emit = useSocketEmit();
+  const on = useSocketOn();
+
+  useEffect(() => {
+    emit('join', { room: 'general' });
+    on('message', (data) => {
+      console.log(data);
+    });
+  }, []);
+
   return (
     <LocalizationProvider locale={esLocale} dateAdapter={AdapterDateFns}>
       <Box
