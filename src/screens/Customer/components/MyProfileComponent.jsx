@@ -21,7 +21,7 @@ import { URL_SERVER } from '../../../helpers/ProviderUrl';
 
 export const MyProfileComponent = () => {
   const [disabledSaveButton, setDisabledSaveButton] = useState(false);
-  const user_data = JSON.parse(sessionStorage.getItem('user_data'));
+  const user_data = JSON.parse(localStorage.getItem('user_data'));
   const [values, setValues] = useState({ ...user_data });
   const [payload, setPayload] = useState({});
 

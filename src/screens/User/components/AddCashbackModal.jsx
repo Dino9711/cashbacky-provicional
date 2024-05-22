@@ -37,8 +37,8 @@ export const AddCashbackModal = ({ open, onClose, setReload, action = '' }) => {
       ...values,
       amount: parseFloat(values.amount),
       action: action,
-      branch: JSON.parse(sessionStorage.getItem('user_data')).branch,
-      user: JSON.parse(sessionStorage.getItem('user_data'))._id,
+      branch: JSON.parse(localStorage.getItem('user_data')).branch,
+      user: JSON.parse(localStorage.getItem('user_data'))._id,
     };
 
     try {

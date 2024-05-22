@@ -7,7 +7,7 @@ import { SingleTransactionComponent } from './SingleTransactionComponent';
 
 export const TransactionsComponent = () => {
   const [transactions, setTransactions] = useState([]);
-  const user_data = JSON.parse(sessionStorage.getItem('user_data'));
+  const user_data = JSON.parse(localStorage.getItem('user_data'));
 
   const getTransactions = async () => {
     try {

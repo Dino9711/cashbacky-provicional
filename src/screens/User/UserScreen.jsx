@@ -22,7 +22,7 @@ export const UserScreen = () => {
   const [reload, setReload] = useState(0);
   const [openAddModal, setOpenAddModal] = useState(false);
   const [actionForModal, setActionForModal] = useState('ADD');
-  const user_data = JSON.parse(sessionStorage.getItem('user_data'));
+  const user_data = JSON.parse(localStorage.getItem('user_data'));
 
   const history = useHistory();
 
