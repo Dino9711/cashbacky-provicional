@@ -7,7 +7,7 @@ import { SingleCardComponent } from './SingleCardComponent';
 
 export const MyCardsComponent = () => {
   const [cards, setCards] = useState([]);
-  const user_data = JSON.parse(sessionStorage.getItem('user_data'));
+  const user_data = JSON.parse(localStorage.getItem('user_data'));
 
   const handleGetCuscomerCards = async () => {
     try {

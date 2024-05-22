@@ -63,7 +63,7 @@ export const TabBar = () => {
   const history = useHistory();
   let [logged] = authProvider.useAuth();
 
-  const user_type = window.sessionStorage.getItem('user_type');
+  const user_type = window.localStorage.getItem('user_type');
 
   React.useEffect(() => {
     if (!logged && !user) {
@@ -74,7 +74,7 @@ export const TabBar = () => {
   }, [logged, user, history]);
 
   React.useEffect(() => {
-    if (JSON.parse(window.sessionStorage.getItem('user_data')) === null) {
+    if (JSON.parse(window.localStorage.getItem('user_data')) === null) {
       authProvider.logout();
       history.push('/login');
     }

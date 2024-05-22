@@ -42,8 +42,8 @@ export const Login = () => {
       .post(`${URL_SERVER}auth/login`, { ...user })
       .then((res) => {
         if (res.data.ok) {
-          sessionStorage.setItem('user_type', res.data.user_type);
-          sessionStorage.setItem('user_data', JSON.stringify(res.data.data));
+          localStorage.setItem('user_type', res.data.user_type);
+          localStorage.setItem('user_data', JSON.stringify(res.data.data));
           authProvider.login(res.data.token);
           history.push('/');
         } else {

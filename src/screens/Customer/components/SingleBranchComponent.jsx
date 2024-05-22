@@ -17,7 +17,7 @@ export const SingleBranchComponent = ({ data = null }) => {
     try {
       const response = await axios.post(`${URL_SERVER}cards`, {
         branch: data._id,
-        customer: JSON.parse(sessionStorage.getItem('user_data'))._id,
+        customer: JSON.parse(localStorage.getItem('user_data'))._id,
       });
 
       if (response.data.ok) {

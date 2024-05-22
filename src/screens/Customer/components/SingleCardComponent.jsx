@@ -17,7 +17,7 @@ import { URL_SERVER } from '../../../helpers/ProviderUrl';
 export const SingleCardComponent = ({ data = null }) => {
   const [openCodeModal, setOpenCodeModal] = useState(false);
   const [currentCode, setCurrentCode] = useState('');
-  const user_data = JSON.parse(sessionStorage.getItem('user_data'));
+  const user_data = JSON.parse(localStorage.getItem('user_data'));
 
   const handleCloseModal = () => {
     setOpenCodeModal(false);
