@@ -36,6 +36,7 @@
     "react-token-auth": "^2.3.8",
     "recharts": "^2.6.2",
     "serve": "^14.2.3",
+    "socket.io-client": "^4.7.5",
     "sonner": "^1.4.0",
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.4"
