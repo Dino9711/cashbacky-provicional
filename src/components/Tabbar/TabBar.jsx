@@ -5,8 +5,9 @@ import * as React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import authProvider from '../../auth/authProvider';
 import { CustomerScreen } from '../../screens/Customer/CustomerScreen';
-import { UserScreen } from '../../screens/User/UserScreen';
 import { Login } from '../../screens/login/Login';
+import { StoreComponent } from '../../screens/Marketplace/Store/StoreComponent';
+import { UserScreen } from '../../screens/User/UserScreen';
 
 const drawerWidth = 165;
 
@@ -113,6 +114,9 @@ export const TabBar = () => {
           <>
             <Route exact path='/'>
               {user_type === 'USER' ? <UserScreen /> : <CustomerScreen />}
+            </Route>
+            <Route path='/marketplace/branches/:branchId'>
+              <StoreComponent />
             </Route>
           </>
         ) : (
