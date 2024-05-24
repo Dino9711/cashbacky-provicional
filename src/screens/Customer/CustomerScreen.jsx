@@ -1,9 +1,10 @@
-import { Loyalty } from '@mui/icons-material';
+import { Loyalty, Shop } from '@mui/icons-material';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import StoreIcon from '@mui/icons-material/Store';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { IconCreditCard, IconUser } from '@tabler/icons-react';
 import React from 'react';
+import { MarketPlaceComponent } from '../Marketplace/MarketPlaceComponent';
 import { BranchesComponent } from './components/BranchesComponent';
 import { MyCardsComponent } from './components/MyCardsComponent';
 import { MyProfileComponent } from './components/MyProfileComponent';
@@ -19,6 +20,7 @@ export const CustomerScreen = () => {
     transactions: <TransactionsComponent />,
     profile: <MyProfileComponent />,
     promotions: <PromotionsComponent />,
+    marketplace: <MarketPlaceComponent />,
   };
 
   const handleChange = (event, newValue) => {
@@ -57,6 +59,11 @@ export const CustomerScreen = () => {
           label='Cards'
           value='cards'
           icon={<IconCreditCard />}
+        />
+        <BottomNavigationAction
+          label='Marketplace'
+          value='marketplace'
+          icon={<Shop />}
         />
         <BottomNavigationAction
           label='Transactions'
