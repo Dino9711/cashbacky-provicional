@@ -15,18 +15,24 @@ export const TabBar = () => {
 
   const user_type = window.localStorage.getItem('user_type');
 
-  // React.useEffect(() => {
-  //   if (!logged && !user) {
-  //     history.push('/login');
-  //   }
-  // }, [logged, user, history]);
-
   React.useEffect(() => {
-    if (JSON.parse(window.localStorage.getItem('user_data')) === null) {
-      authProvider.logout();
+    if (
+      logged === false &&
+      JSON.parse(window.localStorage.getItem('user_data')) === null
+    ) {
+      console.log('logged out');
       history.push('/login');
     }
-  }, []);
+  }, [logged]);
+
+  // React.useEffect(() => {
+  //   if (JSON.parse(window.localStorage.getItem('user_data')) === null) {
+  //     authProvider.logout();
+  //     history.push('/login');
+  //   }
+  // }, []);
+
+  console.log('logged', logged);
 
   return (
     <Box
@@ -35,7 +41,7 @@ export const TabBar = () => {
       }}
     >
       <Switch>
-        {logged && user_type === 'CUSTOMER' ? (
+        {logged === true ? (
           <>
             <Route path='/marketplace/branches/:branchId'>
               <StoreComponent />
@@ -44,11 +50,9 @@ export const TabBar = () => {
               <SuccessPaymentComponent />
             </Route>
             <Route exact path='/'>
-              <CustomerScreen />
+              {user_type === 'CUSTOMER' ? <CustomerScreen /> : <UserScreen />}
             </Route>
           </>
-        ) : user_type === 'USER' ? (
-          <UserScreen />
         ) : (
           <Route exact path='/login'>
             <Login />
