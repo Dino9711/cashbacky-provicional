@@ -4,22 +4,27 @@ import React, { useEffect, useState } from 'react';
 import { NumberToCurrency } from '../../../helpers/NumberToCurrency';
 import { URL_SERVER } from '../../../helpers/ProviderUrl';
 import { CartCard } from './CartCard/CartCard';
+import { NoProducts } from './NoProducts/NoProducts';
 
 export const CartScreen = () => {
   const initialCart = JSON.parse(localStorage.getItem('cart'));
-  const [cart, setCart] = useState(initialCart);
-  const [products, setProducts] = useState(initialCart.cartList || []);
+  const [cart, setCart] = useState(initialCart ?? null);
+  const [products, setProducts] = useState(initialCart?.cartList ?? []);
   const [total, setTotal] = useState(0);
   const [displayTotal, setDisplayTotal] = useState('0.00');
   const [totals, setTotals] = useState([]);
+  const [productsInitialized, setProductsInitialized] = useState(false);
   const userData = JSON.parse(localStorage.getItem('user_data'));
-
   const subtractProduct = (index) => {
     const newProducts = [...products];
     newProducts[index].quantity -= 1;
     if (newProducts[index].quantity === 0) {
       newProducts.splice(index, 1);
       setProducts(newProducts);
+      const newTotals = [...totals];
+      newTotals.splice(index, 1);
+      setTotals(newTotals);
+      setCart({ ...cart, cartList: newProducts });
       return;
     }
 
@@ -68,10 +73,8 @@ export const CartScreen = () => {
         };
       }),
     };
-    console.log('payload', payload);
     try {
       const response = await axios.post(`${URL_SERVER}stripe_session`, payload);
-      console.log('res', response);
       if (response.data.ok) {
         alert('Order created successfully');
         window.location.href = response.data.stripe_session_url;
@@ -84,7 +87,9 @@ export const CartScreen = () => {
   };
 
   useEffect(() => {
+    if (productsInitialized) return;
     if (!cart) return;
+    if (cart.cartList.length === 0) return;
     const newTotal = products.reduce((acc, product) => {
       return acc + product.price * product.quantity;
     }, 0);
@@ -98,13 +103,24 @@ export const CartScreen = () => {
       };
     });
     setTotals(newTotals);
+    setProductsInitialized(true);
   }, [products, cart]);
 
   useEffect(() => {
     const newDisplayTotal = NumberToCurrency(total);
     setDisplayTotal(newDisplayTotal);
   }, [total]);
-  if (!cart || totals.length === 0) return <h1>Cart is empty</h1>;
+
+  useEffect(() => {
+    if (products.length === 0) {
+      if (!cart) return;
+      setCart(null);
+      localStorage.removeItem('cart');
+      return;
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+  if (!cart || totals.length === 0) return <NoProducts />;
 
   return (
     <>
