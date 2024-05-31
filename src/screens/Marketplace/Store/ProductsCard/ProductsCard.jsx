@@ -9,8 +9,9 @@ export const ProductsCard = ({ product, updateCart }) => {
     <>
       <Card
         sx={{
-          padding: '15px',
+          borderRadius: 3,
         }}
+        elevation={0}
       >
         <CardContent>
           <Stack
@@ -22,8 +23,8 @@ export const ProductsCard = ({ product, updateCart }) => {
           >
             <CircularCropImage
               image={product.image}
-              width='255px'
-              height='255px'
+              width='200px'
+              height='200px'
             />
             <Typography
               sx={{

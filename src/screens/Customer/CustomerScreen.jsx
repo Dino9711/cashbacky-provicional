@@ -1,7 +1,7 @@
 import { Loyalty, Shop } from '@mui/icons-material';
 import DehazeIcon from '@mui/icons-material/Dehaze';
 import StoreIcon from '@mui/icons-material/Store';
-import { BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { IconCreditCard, IconUser } from '@tabler/icons-react';
 import React from 'react';
 import { MarketPlaceComponent } from '../Marketplace/MarketPlaceComponent';
@@ -12,7 +12,7 @@ import { PromotionsComponent } from './components/PromotionsComponent';
 import { TransactionsComponent } from './components/TransactionsComponent';
 
 export const CustomerScreen = () => {
-  const [value, setValue] = React.useState('cards');
+  const [value, setValue] = React.useState('marketplace');
 
   const components = {
     branches: <BranchesComponent />,
@@ -29,7 +29,16 @@ export const CustomerScreen = () => {
 
   return (
     <>
-      {components[value]}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        {components[value]}
+      </Box>
       <BottomNavigation
         sx={{
           position: 'fixed',
@@ -41,36 +50,76 @@ export const CustomerScreen = () => {
           '& .Mui-selected': {
             color: '#222224',
           },
+          '& .MuiBottomNavigationAction-root': {
+            minWidth: 'auto',
+            padding: '4px',
+          },
         }}
         value={value}
         onChange={handleChange}
       >
         <BottomNavigationAction
+          sx={{
+            color: '#222224',
+            '& .Mui-selected': {
+              color: '#222224',
+            },
+          }}
           label='Branches'
           value='branches'
           icon={<StoreIcon />}
         />
         <BottomNavigationAction
+          sx={{
+            color: '#222224',
+            '& .Mui-selected': {
+              color: '#222224',
+            },
+          }}
           label='Promotions'
           value='promotions'
           icon={<Loyalty />}
         />
         <BottomNavigationAction
+          sx={{
+            color: '#222224',
+            '& .Mui-selected': {
+              color: '#222224',
+            },
+          }}
           label='Cards'
           value='cards'
           icon={<IconCreditCard />}
         />
         <BottomNavigationAction
+          sx={{
+            color: '#222224',
+            '& .Mui-selected': {
+              color: '#222224',
+            },
+          }}
           label='Marketplace'
           value='marketplace'
           icon={<Shop />}
         />
         <BottomNavigationAction
+          sx={{
+            color: '#222224',
+            '& .Mui-selected': {
+              color: '#222224',
+            },
+          }}
           label='Transactions'
           value='transactions'
           icon={<DehazeIcon />}
         />
         <BottomNavigationAction
+          sx={{
+            color: '#222224',
+            '& .Mui-selected': {
+              color: '#222224',
+            },
+          }}
           label='Profile'
           value='profile'
           icon={<IconUser />}

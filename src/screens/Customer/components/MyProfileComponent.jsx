@@ -28,6 +28,7 @@ export const MyProfileComponent = () => {
   const history = useHistory();
 
   const handleCloseSession = () => {
+    localStorage.clear();
     authProvider.logout();
     history.push('/login');
   };
