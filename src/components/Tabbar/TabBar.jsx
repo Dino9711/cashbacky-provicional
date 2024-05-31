@@ -6,6 +6,7 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import authProvider from '../../auth/authProvider';
 import { CustomerScreen } from '../../screens/Customer/CustomerScreen';
 import { Login } from '../../screens/login/Login';
+import { CartScreen } from '../../screens/Marketplace/CartScreen/CartScreen';
 import { StoreComponent } from '../../screens/Marketplace/Store/StoreComponent';
 import { UserScreen } from '../../screens/User/UserScreen';
 
@@ -117,6 +118,9 @@ export const TabBar = () => {
             </Route>
             <Route path='/marketplace/branches/:branchId'>
               <StoreComponent />
+            </Route>
+            <Route exact path='/cart'>
+              <CartScreen />
             </Route>
           </>
         ) : (

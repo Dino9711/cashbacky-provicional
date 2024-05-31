@@ -4,7 +4,7 @@ import React from 'react';
 import { CircularCropImage } from '../../../../components/ImageComponents/CircularCropImage';
 import { NumberToCurrency } from '../../../../helpers/NumberToCurrency';
 
-export const ProductsCard = ({ product }) => {
+export const ProductsCard = ({ product, updateCart }) => {
   return (
     <>
       <Card
@@ -74,6 +74,7 @@ export const ProductsCard = ({ product }) => {
                   color: 'black',
                 },
               }}
+              onClick={() => updateCart(product)}
             >
               <Stack direction='row' spacing={2}>
                 <ShoppingCart />
