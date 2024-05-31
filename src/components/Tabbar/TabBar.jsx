@@ -3,10 +3,11 @@ import * as React from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import authProvider from '../../auth/authProvider';
 import { CustomerScreen } from '../../screens/Customer/CustomerScreen';
+import { Login } from '../../screens/login/Login';
+import { CartScreen } from '../../screens/Marketplace/CartScreen/CartScreen';
 import { StoreComponent } from '../../screens/Marketplace/Store/StoreComponent';
 import { SuccessPaymentComponent } from '../../screens/Payments/SuccessPaymentComponent';
 import { UserScreen } from '../../screens/User/UserScreen';
-import { Login } from '../../screens/login/Login';
 
 export const TabBar = () => {
   const user = JSON.parse(window.localStorage.getItem('username'));
@@ -45,6 +46,9 @@ export const TabBar = () => {
           <>
             <Route path='/marketplace/branches/:branchId'>
               <StoreComponent />
+            </Route>
+            <Route exact path='/cart'>
+              <CartScreen />
             </Route>
             <Route exact path='/success-payment'>
               <SuccessPaymentComponent />
