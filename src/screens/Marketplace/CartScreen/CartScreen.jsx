@@ -12,6 +12,8 @@ export const CartScreen = () => {
   const [products, setProducts] = useState(initialCart?.cartList ?? []);
   const [total, setTotal] = useState(0);
   const [displayTotal, setDisplayTotal] = useState('0.00');
+  const [showShippingForm, setShowShippingForm] = useState(false);
+  const [readyInMinutes, setReadyInMinutes] = useState(false);
   const [totals, setTotals] = useState([]);
   const [productsInitialized, setProductsInitialized] = useState(false);
   const userData = JSON.parse(localStorage.getItem('user_data'));
@@ -48,10 +50,32 @@ export const CartScreen = () => {
     setProducts(newProducts);
   };
 
+  const getBranchInfo = async () => {
+    try {
+      const response = await axios.get(
+        `${URL_SERVER}branches/id?id=${cart.branchId}`,
+      );
+      const data = response.data.data;
+      if (response.data.ok) {
+        setReadyInMinutes(data.ready_in_minutes);
+        if (data.with_delivery) {
+          setShowShippingForm(true);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getBranchInfo();
+  }, []);
+
   const goToCheckOut = async () => {
     const payload = {
       branch: cart.branchId,
       customer: userData._id,
+      message_for_customer: readyInMinutes ? 'Listo en 35-45 min.' : '',
       payment: total,
       products_for_db: products.map((product) => {
         return {
@@ -73,6 +97,11 @@ export const CartScreen = () => {
         };
       }),
     };
+
+    if (showShippingForm) {
+      payload.with_shipping = true;
+    }
+
     try {
       const response = await axios.post(`${URL_SERVER}stripe_session`, payload);
       if (response.data.ok) {
@@ -124,7 +153,7 @@ export const CartScreen = () => {
 
   return (
     <>
-      <Grid container>
+      <Grid container spacing={1}>
         <Grid item xs={12}>
           {products.map((product, index) => (
             <CartCard
@@ -159,6 +188,12 @@ export const CartScreen = () => {
         >
           <Button
             variant='contained'
+            sx={{
+              backgroundColor: total > 0 ? 'black' : 'gray',
+              color: 'white',
+              fontFamily: 'Futura',
+              borderRadius: 3,
+            }}
             onClick={() => {
               total > 0 && goToCheckOut();
             }}
