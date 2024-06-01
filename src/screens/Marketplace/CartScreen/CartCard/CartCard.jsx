@@ -22,7 +22,9 @@ export const CartCard = ({
     <Card
       sx={{
         marginBlock: '10px',
+        borderRadius: 3,
       }}
+      elevation={0}
     >
       <CardContent>
         <Grid container>
@@ -54,16 +56,43 @@ export const CartCard = ({
                 <Typography fontWeight='bold'> Total:&nbsp;</Typography>
                 <Typography>{displayPrice}</Typography>
               </Stack>
-              <ButtonGroup variant='contained'>
+              <ButtonGroup
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  borderRadius: 2,
+                }}
+                variant='contained'
+              >
                 <Button
+                  sx={{
+                    backgroundColor: 'black',
+                    color: 'white',
+                    fontFamily: 'Futura',
+                    borderRadius: 2,
+                  }}
                   onClick={() => {
                     subtractProduct(index);
                   }}
                 >
                   -
                 </Button>
-                <Button>{product.quantity}</Button>
                 <Button
+                  sx={{
+                    backgroundColor: 'black',
+                    color: 'white',
+                    fontFamily: 'Futura',
+                  }}
+                >
+                  {product.quantity}
+                </Button>
+                <Button
+                  sx={{
+                    backgroundColor: 'black',
+                    color: 'white',
+                    fontFamily: 'Futura',
+                    borderRadius: 2,
+                  }}
                   onClick={() => {
                     addProduct(index);
                   }}
