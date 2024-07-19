@@ -26,7 +26,12 @@ export const NoProducts = () => {
       }}
     >
       <CardMedia component='img' image={emptyCart} alt='empty-cart' />
-      <Card>
+      <Card
+        sx={{
+          borderRadius: 3,
+        }}
+        elevation={0}
+      >
         <CardContent>
           <Stack spacing={2} sx={{ alignItems: 'center', padding: '15px' }}>
             <Typography variant='h5'>No products in cart</Typography>
