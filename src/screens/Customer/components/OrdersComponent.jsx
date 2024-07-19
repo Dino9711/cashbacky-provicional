@@ -1,3 +1,4 @@
+import { AccessTime } from '@mui/icons-material';
 import {
   Box,
   Button,
@@ -42,23 +43,26 @@ export const OrdersComponent = ({ data = null }) => {
               alignItems: 'center',
             }}
           >
-            <Button
-              variant='outlined'
-              color={
-                data.status === 'pending'
-                  ? 'primary'
-                  : data.status === 'canceled'
-                  ? 'error'
-                  : 'secondary'
-              }
-              disableElevation
-              sx={{
-                fontFamily: 'Futura',
-                borderRadius: 2,
-              }}
-            >
-              {`Estado de pago: ${data.status}`}
-            </Button>
+            {data?.message_for_customer !== '' &&
+            data?.message_for_customer !== undefined ? (
+              <Button
+                variant='outlined'
+                color={
+                  data.status === 'pending'
+                    ? 'primary'
+                    : data.status === 'canceled'
+                    ? 'error'
+                    : 'secondary'
+                }
+                disableElevation
+                sx={{
+                  fontFamily: 'Futura',
+                  borderRadius: 2,
+                }}
+              >
+                {`${data?.message_for_customer}`} <AccessTime />
+              </Button>
+            ) : null}
             <Typography
               variant='h6'
               sx={{
